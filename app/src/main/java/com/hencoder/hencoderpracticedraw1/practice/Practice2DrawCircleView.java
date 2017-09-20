@@ -62,6 +62,5 @@ public class Practice2DrawCircleView extends View {
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(20);
         canvas.drawCircle(width / 2, height / 2, r, paint);
-
     }
 }
