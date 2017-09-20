@@ -2,7 +2,10 @@ package com.hencoder.hencoderpracticedraw1.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,10 +23,27 @@ public class Practice5DrawOvalView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
 //        练习内容：使用 canvas.drawOval() 方法画椭圆
+
+        // 打开抗锯齿效果
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        int width = canvas.getWidth() / 2;
+        int height = canvas.getHeight() / 2;
+
+        // 将坐标原点移动到中心点
+        canvas.save();
+        canvas.translate(width, height);
+
+        // 画椭圆
+        canvas.drawOval(-150, -100, -50, 100, paint);
+
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawOval(50, -50, 250, 50, paint);
     }
 }
